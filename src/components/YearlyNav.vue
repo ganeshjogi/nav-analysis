@@ -64,7 +64,7 @@ async function fetchNavs() {
 
 <template>
   <template class="row justify-content-center">
-    <Card class="col-5 m-3" v-for="scheme in navData">
+    <Card class="col m-3" v-for="scheme in navData">
       <template #title>
         <div v-tooltip="scheme.schemeName" class="truncate-single-line">
           {{ scheme.schemeName }}
@@ -72,8 +72,8 @@ async function fetchNavs() {
       </template>
       <template #subtitle>{{ scheme.schemeCode }}</template>
       <template #content>
-        <div class="d-flex justify-content-evenly">
-          <Card>
+        <div class="row justify-content-evenly">
+          <Card class="col">
             <template #title>Today</template>
             <template #content>
               <p class="m-0">
@@ -81,13 +81,13 @@ async function fetchNavs() {
               </p>
             </template>
           </Card>
-          <Card>
+          <Card class="col">
             <template #title>Low</template>
             <template #content>
               <p class="m-0">{{ scheme.yearlyLow }}</p>
             </template>
           </Card>
-          <Card>
+          <Card class="col">
             <template #title>High</template>
             <template #content>
               <p class="m-0">{{ scheme.yearlyHigh }}</p>
@@ -103,9 +103,14 @@ async function fetchNavs() {
 h2 {
   color: #2c3e50;
 }
-.truncate-single-line {
-  white-space: nowrap; /* Prevents text from wrapping to the next line */
-  overflow: hidden; /* Hides any overflowing content */
-  text-overflow: ellipsis; /* Displays an ellipsis to indicate truncated text */
+
+/* Desktop view (screens larger than 1024px) */
+@media screen and (min-width: 720px) {
+  .truncate-single-line {
+    max-width: 400px; /* Set a maximum width for desktop view */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 </style>
