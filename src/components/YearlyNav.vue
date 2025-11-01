@@ -64,7 +64,7 @@ async function fetchNavs() {
 
 <template>
   <template class="row justify-content-center">
-    <Card class="col m-3" v-for="scheme in navData">
+    <Card class="col m-4" v-for="scheme in navData">
       <template #title>
         <div v-tooltip="scheme.schemeName" class="truncate-single-line">
           {{ scheme.schemeName }}
@@ -102,6 +102,12 @@ async function fetchNavs() {
 <style scoped>
 h2 {
   color: #2c3e50;
+}
+
+.truncate-single-line {
+  /* white-space: nowrap;
+  overflow: hidden; */
+  word-break: break-all;
 }
 
 /* Desktop view (screens larger than 1024px) */
